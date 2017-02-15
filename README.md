@@ -1,2 +1,2 @@
-# molten-tests-database
-Tests for database connections
+# molten-databases
+Specification and test generator for the MoltenDB database interfaces.
