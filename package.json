@@ -1,0 +1,27 @@
+{
+  "name": "molten-databases",
+  "version": "0.1.0",
+  "description": "Specification and test generator for the MoltenDB database interface",
+  "main": "dist/index.js",
+  "types": "src/typings/api.d.ts",
+  "scripts": {
+    "test": "tslint src/**/*.ts && tsc --noEmit",
+    "dev": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoltenDB/molten-databases.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MoltenDB/molten-databases/issues"
+  },
+  "homepage": "https://github.com/MoltenDB/molten-databases#readme",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.43",
+    "tslint": "^4.4.2",
+    "tslint-eslint-rules": "^3.3.0",
+    "typescript": "^2.1.6"
+  }
+}
