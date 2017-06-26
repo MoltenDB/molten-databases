@@ -1,8 +1,12 @@
 const createInitialisationTests = (connectStorage: MDB.Storage.connectStorage,
     testStorageOptions: MDB.Storage.testStorageOptions) => {
   describe('connectStorage()', () => {
-    it('should have types property of array of types database supports', () => {
+    it('should have `types` property of array of types that the storage supports', () => {
       expect(connectStorage.types).toEqual(jasmine.any(Array));
+    });
+
+    it('should have `features` property of array of features that the storage supports', () => {
+      expect(connectStorage.features).toEqual(jasmine.any(Array));
     });
 
     describe('should return a Promise that rejects on bad options', () => {
@@ -27,10 +31,6 @@ const createInitialisationTests = (connectStorage: MDB.Storage.connectStorage,
         return () => {
           return connectStorage(options).then((storage) => {
             expect(storage).toEqual(jasmine.any(Object));
-            expect(storage.create).toEqual(jasmine.any(Function));
-            expect(storage.read).toEqual(jasmine.any(Function));
-            expect(storage.update).toEqual(jasmine.any(Function));
-            expect(storage.delete).toEqual(jasmine.any(Function));
             expect(storage.close).toEqual(jasmine.any(Function));
           });
         };

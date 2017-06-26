@@ -1,11 +1,15 @@
 import createInitialisationTests from './tests/initialisation.spec';
-import createTableTests from './tests/tableTests.spec';
-import createOperationTests from './tests/operationTests.spec';
+import createStoreTests from './tests/storeTests.spec';
+import createItemStoreOperationTests from './tests/itemStoreOperationTests.spec';
+import createKeyStoreStoreOperationTests from './tests/keyValueStoreOperationTests.spec';
 
-const makeDatabaseTests = (connectStorage: MDB.Storage.connectStorage,
+const makeStorageTests = (connectStorage: MDB.Storage.connectStorage,
     testStorageOptions: MDB.Storage.testStorageOptions) => {
   createInitialisationTests(connectStorage, testStorageOptions);
-  createTableTests(connectStorage, testStorageOptions);
-  createOperationTests(connectStorage, testStorageOptions);
+  createStoreTests(connectStorage, testStorageOptions);
+  createItemStoreOperationTests(connectStorage, testStorageOptions);
+  if (connectStorage.features.indexOf('keyValue') !== -1) {
+    createKeyStoreStoreOperationTests(connectStorage, testStorageOptions);
+  }
 };
-export default makeDatabaseTests;
+export default makeStorageTests;

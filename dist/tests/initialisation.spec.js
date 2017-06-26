@@ -1,8 +1,11 @@
 "use strict";
 var createInitialisationTests = function (connectStorage, testStorageOptions) {
     describe('connectStorage()', function () {
-        it('should have types property of array of types database supports', function () {
+        it('should have `types` property of array of types that the storage supports', function () {
             expect(connectStorage.types).toEqual(jasmine.any(Array));
+        });
+        it('should have `features` property of array of features that the storage supports', function () {
+            expect(connectStorage.features).toEqual(jasmine.any(Array));
         });
         describe('should return a Promise that rejects on bad options', function () {
             var makeTestFunction = function (options) {
@@ -24,10 +27,6 @@ var createInitialisationTests = function (connectStorage, testStorageOptions) {
                 return function () {
                     return connectStorage(options).then(function (storage) {
                         expect(storage).toEqual(jasmine.any(Object));
-                        expect(storage.create).toEqual(jasmine.any(Function));
-                        expect(storage.read).toEqual(jasmine.any(Function));
-                        expect(storage.update).toEqual(jasmine.any(Function));
-                        expect(storage.delete).toEqual(jasmine.any(Function));
                         expect(storage.close).toEqual(jasmine.any(Function));
                     });
                 };
